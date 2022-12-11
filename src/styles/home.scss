@@ -1,0 +1,40 @@
+.homeContainer {
+  padding: 0 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 90vh;
+  color: #fff;
+  .firstSection {
+    > p {
+      font-size: 1.9rem;
+      span {
+        color: cyan;
+      }
+      > hr {
+        width: 12rem;
+      }
+    }
+    > div {
+      font-size: 1.4rem;
+    }
+  }
+  .secondSection {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 670px) {
+  .homeContainer {
+    padding: 0rem 1rem;
+    .firstSection {
+      > p {
+        font-size: 1.3rem;
+      }
+      > div {
+        font-size: 1rem;
+      }
+    }
+  }
+}

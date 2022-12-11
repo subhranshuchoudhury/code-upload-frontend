@@ -1,0 +1,92 @@
+.container {
+  display: flex;
+  align-items: center;
+  height: 50vh;
+  width: 70vw;
+  overflow: hidden;
+}
+
+.pacman {
+  position: relative;
+  background: transparent;
+  z-index: 1;
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: -35px;
+    display: block;
+    border-radius: 50%;
+    content: "";
+    height: 0px;
+    width: 0px;
+  }
+
+  &::before {
+    animation: chunk-top 0.5s ease infinite;
+    border: 35px solid #ffcc00;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+  }
+
+  &::after {
+    animation: chunk-bottom 0.5s ease infinite;
+    border: 35px solid #ffcc00;
+    border-right-color: transparent;
+    border-top-color: transparent;
+  }
+}
+
+.path {
+  display: flex;
+  justify-content: space-around;
+  animation: eating-path 7s linear infinite;
+  width: 100%;
+  &::before {
+    border-radius: 50%;
+    content: "";
+    height: 1rem;
+    width: 1rem;
+  }
+}
+.dot {
+  font-size: 1.6rem;
+  color: cyan;
+}
+
+@keyframes chunk-top {
+  0%,
+  100% {
+    transform: rotate(-45deg);
+  }
+  50% {
+    transform: rotate(-80deg);
+  }
+}
+
+@keyframes chunk-bottom {
+  0%,
+  100% {
+    transform: rotate(-40deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes eating-path {
+  0% {
+    transform: translateX(90%);
+  }
+  100% {
+    transform: translateX(-90%);
+  }
+}
+@media (max-width: 670px) {
+  .container {
+    width: 80vh;
+  }
+  .dot {
+    font-size: 1rem;
+  }
+}

@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import "../styles/login.scss";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Login = () => {
   const [inputs, setInputs] = useState({});
   const [IsRegistered, setIsRegistered] = useState(false);
@@ -43,7 +47,7 @@ const Login = () => {
       inputs.username === undefined ||
       inputs.password === undefined
     ) {
-      alert("❌ Username or Password can't be empty!");
+      toast.error("❌ Username or Password can't be empty!");
       setLoading(false);
       return;
     }
@@ -64,13 +68,15 @@ const Login = () => {
           document.cookie = `password=${inputs.password};`;
           setIsRegistered(true);
           setLoading(false);
+        } else if (response.status === 404) {
+          toast.error("Invalid credentials");
         }
       })
       .catch((err) => {
         setLoading(false);
         console.error(err);
         String(err).includes("Unauthorized")
-          ? alert("Wrong Credentials!")
+          ? toast.error("Wrong Credentials!")
           : console.error(err);
       });
   };
@@ -87,49 +93,57 @@ const Login = () => {
           </Link>
         </div>
       ) : (
-        <div className="formContainer">
-          <div className="mb-3">
-            <label for="exampleInputEmail1" className="form-label">
-              Username
-            </label>
-            <input
-              type="text"
-              name="username"
-              value={inputs.username || ""}
-              onChange={handleChange}
-              className="form-control"
-              aria-describedby="emailHelp"
-            ></input>
-            <div id="emailHelp" className="form-text">
-              ⚠️ Username and Password are case sensitive.
+        <div className="formContainerLogIn">
+          <div className="logInController">
+            <div className="mb-3">
+              <legend for="exampleInputEmail1" className="form-label">
+                Username
+              </legend>
+              <input
+                type="text"
+                name="username"
+                value={inputs.username || ""}
+                onChange={handleChange}
+                className="form-control"
+                aria-describedby="emailHelp"
+              ></input>
+              <div id="emailHelp" className="form-text">
+                ⚠️ Username and Password are case sensitive.
+              </div>
+              <legend for="exampleInputPassword1" className="form-label">
+                Password
+              </legend>
+              <input
+                type="password"
+                name="password"
+                value={inputs.password || ""}
+                onChange={handleChange}
+                className="form-control"
+              ></input>
             </div>
+            <button onClick={handlePOST} className="MyButton">
+              {Loading ? "Please Wait..." : "Login"}
+            </button>
+            <br />
+            <p className="footerL">
+              ✅ Login with any username and password but remember it to
+              retrieve your codes later.
+            </p>
           </div>
-          <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">
-              Password
-            </label>
-            <input
-              type="password"
-              name="password"
-              value={inputs.password || ""}
-              onChange={handleChange}
-              className="form-control"
-            ></input>
-          </div>
-          <button onClick={handlePOST} className="MyButton">
-            {Loading ? "Please Wait..." : "Login"}
-          </button>
-          <br />
-          {/* <p>Are you new to here ? </p>
-          <Link to="/register" className="MyButton">
-            Register
-          </Link> */}
-          <p className="footer">
-            ✅ Login with any username and password but remember it to retrieve
-            your codes later.
-          </p>
         </div>
       )}
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </>
   );
 };

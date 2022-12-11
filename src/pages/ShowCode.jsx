@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CodeCard from "../components/CodeCard";
+import "../styles/codecard.scss";
 
 const ShowCode = () => {
   const [Codes, setCodes] = useState([]);
@@ -13,7 +14,7 @@ const ShowCode = () => {
       setIsRegistered(false);
       setIsLoading(false);
     }
-    fetchData();
+    fetchData(); // eslint-disable-next-line
   }, []);
 
   function getCookie(cname) {
@@ -61,22 +62,14 @@ const ShowCode = () => {
       <div className="pageTitle">YOUR UPLOADED CODES</div>
 
       {IsLoading ? (
-        <center>
-          <div
-            style={{ marginTop: "30px" }}
-            class="spinner-grow text-success"
-            role="status"
-          >
-            <span class="visually-hidden">Loading...</span>
-          </div>
-          <div class="spinner-grow text-danger" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div>
-          <div class="spinner-grow text-warning" role="status">
-            <span class="visually-hidden">Loading...</span>
+        <div className="centerLoader">
+          <div className="loader">
+            <span className="loader__element"></span>
+            <span className="loader__element"></span>
+            <span className="loader__element"></span>
           </div>
           <p>Loading...</p>
-        </center>
+        </div>
       ) : null}
 
       {IsRegistered ? (
@@ -97,12 +90,12 @@ const ShowCode = () => {
         </div>
       ) : (
         <div className="formContainer">
-          <center>
-            <p>You are not logged In.</p>
-            <Link to="/login" className="MyButton">
+          <div className="codeUp">
+            <p className="alertMessagen">🚫You are not logged In.</p>
+            <Link to="/login" className="MyButtonL">
               Login ➡️
             </Link>
-          </center>
+          </div>
         </div>
       )}
     </>

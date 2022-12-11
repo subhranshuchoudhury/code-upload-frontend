@@ -1,6 +1,11 @@
 import { Outlet, Link } from "react-router-dom";
+import logo from "../soa-logo.png";
+import { useState } from "react";
+import "../styles/navbar.scss";
 
 const Layout = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const logoutUser = () => {
     document.cookie = "username=";
     document.cookie = "password=";
@@ -8,45 +13,38 @@ const Layout = () => {
   };
   return (
     <>
-      <ul className="nav justify-content-center">
-        <li className="nav-item">
-          <Link className="nav-link active" to="/">
+      <div className="Navbar">
+        <Link to="/">
+          <img src={logo} alt="" className="nav-logo" />
+        </Link>
+        <div className={`nav-items ${isOpen && "open"}`}>
+          <Link onClick={() => setIsOpen(!isOpen)} to="/">
             Home 🏡
           </Link>
-        </li>
-        {/* <li className="nav-item">
-          <Link className="nav-link" to="register">
-            Register 📝
-          </Link>
-        </li> */}
-        <li className="nav-item">
-          <Link className="nav-link" to="login">
+          <Link onClick={() => setIsOpen(!isOpen)} to="/login">
             Login 🔐
           </Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="upload-code">
+          <Link onClick={() => setIsOpen(!isOpen)} to="/upload-code">
             Upload Code ⬆️
           </Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="show-code">
+          <Link onClick={() => setIsOpen(!isOpen)} to="/show-code">
             Your Codes 📁
           </Link>
-        </li>
-        <li className="nav-item">
-          <Link onClick={logoutUser} className="nav-link" to="/">
-            Logout 🔑
+          <Link onClick={() => setIsOpen(!isOpen)}>
+            <Link onClick={logoutUser} to="/" style={{ color: "#fff" }}>
+              Logout 🔑
+            </Link>
           </Link>
-        </li>
-      </ul>
+        </div>
+        <div
+          className={`nav-toggle ${isOpen && "open"}`}
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <div className="bar"></div>
+        </div>
+      </div>
 
       <Outlet />
-      <br />
-      <br />
-      <center>
-        <p className="footer">Made by a ITERIAN 💖 (beta stage)</p>
-      </center>
     </>
   );
 };

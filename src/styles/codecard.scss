@@ -1,0 +1,67 @@
+.codeCardContainer {
+  min-height: 90vh;
+  display: grid;
+  place-items: center;
+  align-items: baseline;
+  .codeContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    > span {
+      color: #fff;
+      font-size: 1.2rem;
+    }
+    .codeSource {
+      width: 60vw;
+      overflow: scroll;
+      font-size: 1.4rem;
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+      pre {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+}
+@media (max-width: 550px) {
+  .codeCardContainer {
+    .codeContainer {
+      > span {
+        font-size: 1rem;
+      }
+      .codeSource {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+@media (max-width: 750px) {
+  .codeCardContainer {
+    .codeContainer {
+      .codeSource {
+        width: 90vw;
+      }
+    }
+  }
+}
+@media (max-width: 400px) {
+  .codeCardContainer {
+    .codeContainer {
+      > span {
+        font-size: 1rem;
+      }
+      .codeSource {
+        font-size: 1rem;
+      }
+    }
+  }
+}

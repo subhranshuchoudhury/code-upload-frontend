@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "../styles/codeupload.scss";
+
 const CodeUpload = () => {
   const [inputs, setInputs] = useState({});
   const [IsRegistered, setIsRegistered] = useState(false);
@@ -32,7 +36,7 @@ const CodeUpload = () => {
       inputs.code === "" ||
       inputs.code === undefined
     ) {
-      alert("❌ Fields can't be empty!");
+      toast.error("Fields can't be empty!");
       setLoading(false);
       return;
     }
@@ -57,7 +61,7 @@ const CodeUpload = () => {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-          alert("✅ Code Upload successfully!");
+          toast.success("Code Upload successfully!");
           setIsRegistered(true);
           setLoading(false);
         }
@@ -66,7 +70,7 @@ const CodeUpload = () => {
         setLoading(false);
         console.error(err);
         String(err).includes("Unauthorized")
-          ? alert("Wrong Credentials!")
+          ? toast.error("Wrong Credentials!")
           : console.error(err);
       });
   };
@@ -79,97 +83,94 @@ const CodeUpload = () => {
   }, []);
   return (
     <>
-      <div className="pageTitle">UPLOAD YOUR CODE</div>
+      <div className="pageTitleU">UPLOAD YOUR CODE</div>
 
-      <p className="alertMessage pageTitle">
+      <p className="alertMessageC pageTitleU">
         *you can leave every box empty without code/program box.
       </p>
       {IsRegistered ? (
-        <div className="formContainer">
-          <div className="mb-3">
-            <label for="exampleInputEmail1" className="form-label">
-              Assignment No.
-            </label>
-            <input
-              type="number"
-              placeholder="Enter Assignment no..."
-              name="assignment_no"
-              value={inputs.assignment_no || ""}
-              onChange={handleChange}
-              className="form-control"
-            ></input>
+        <div className="formContainerC">
+          <div className="mainForm">
+            <div className="mb-3">
+              <legend for="exampleInputEmail1" className="form-label">
+                Assignment No.
+              </legend>
+              <input
+                type="number"
+                placeholder="Enter Assignment no..."
+                name="assignment_no"
+                value={inputs.assignment_no || ""}
+                onChange={handleChange}
+                className="form-control"
+              ></input>
+            </div>
+            <div className="mb-3">
+              <legend for="exampleInputEmail1" className="form-label">
+                Question No.
+              </legend>
+              <input
+                type="number"
+                placeholder="Enter Question Number..."
+                name="q_no"
+                value={inputs.q_no || ""}
+                onChange={handleChange}
+                className="form-control"
+              ></input>
+            </div>
+            <div className="mb-3">
+              <legend for="exampleInputEmail1" className="form-label">
+                Language
+              </legend>
+              <input
+                type="text"
+                placeholder="Leave it blank if language is java.."
+                name="language"
+                value={inputs.language || ""}
+                onChange={handleChange}
+                className="form-control"
+              ></input>
+            </div>
+            <div className="mb-3">
+              <legend for="exampleInputPassword1" className="form-label">
+                Code / Program
+              </legend>
+              <textarea
+                type="password"
+                name="code"
+                placeholder="Paste your code here..."
+                value={inputs.code || ""}
+                onChange={handleChange}
+                className="form-control"
+                rows={"10"}
+              ></textarea>
+            </div>
+            <button onClick={handlePOST} className="MyButtonC">
+              {Loading ? "Wait Uploading..." : "Upload"}
+            </button>
           </div>
-          <div className="mb-3">
-            <label for="exampleInputEmail1" className="form-label">
-              Question No.
-            </label>
-            <input
-              type="number"
-              placeholder="Enter Question Number..."
-              name="q_no"
-              value={inputs.q_no || ""}
-              onChange={handleChange}
-              className="form-control"
-            ></input>
-          </div>
-          <div className="mb-3">
-            <label for="exampleInputEmail1" className="form-label">
-              Language
-            </label>
-            <input
-              type="text"
-              placeholder="Leave it blank if language is java.."
-              name="language"
-              value={inputs.language || ""}
-              onChange={handleChange}
-              className="form-control"
-            ></input>
-          </div>
-          {/* <div className="mb-3">
-            <label for="exampleInputEmail1" className="form-label">
-              Question Title
-            </label>
-            <input
-              type="text"
-              placeholder="Not necessary.."
-              name="q_title"
-              value={inputs.q_title || ""}
-              onChange={handleChange}
-              className="form-control"
-            ></input>
-          </div> */}
-          <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">
-              Code / Program
-            </label>
-            <textarea
-              type="password"
-              name="code"
-              placeholder="Paste your code here..."
-              value={inputs.code || ""}
-              onChange={handleChange}
-              className="form-control"
-              rows={"10"}
-            ></textarea>
-          </div>
-          <button
-            style={{ width: "50%" }}
-            onClick={handlePOST}
-            className="MyButton"
-          >
-            {Loading ? "Wait Uploading..." : "Upload"}
-          </button>
         </div>
       ) : (
         <div>
-          <center>
-            <p className="alertMessage">🚫You are not logged In.</p>
-            <Link to="/login" className="MyButton">
+          <div className="codeUp ">
+            <p className="alertMessagen">🚫You are not logged In.</p>
+            <Link to="/login" className="MyButtonL">
               Login ➡️
             </Link>
-          </center>
+          </div>
         </div>
       )}
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </>
   );
 };
