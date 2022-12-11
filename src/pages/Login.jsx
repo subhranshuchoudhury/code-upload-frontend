@@ -47,7 +47,7 @@ const Login = () => {
       inputs.username === undefined ||
       inputs.password === undefined
     ) {
-      toast.error("❌ Username or Password can't be empty!");
+      toast.error("Username or Password can't be empty!");
       setLoading(false);
       return;
     }
@@ -70,6 +70,7 @@ const Login = () => {
           setLoading(false);
         } else if (response.status === 404) {
           toast.error("Invalid credentials");
+          setLoading(false);
         }
       })
       .catch((err) => {
