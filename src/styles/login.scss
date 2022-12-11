@@ -1,0 +1,69 @@
+.pageTitle {
+  color: #fff;
+  padding: 4rem 0;
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+.formContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 55vh;
+  > a {
+    color: cyan;
+    font-size: 1.5rem;
+  }
+}
+.formContainerLogIn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  color: white;
+  min-height: 60vh;
+  .logInController {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+    .mb-3 {
+      > input {
+        width: 100%;
+        font-size: 1.1rem;
+        padding: 0.5rem 0.2rem;
+        border-radius: 5px;
+        border: 2px solid cyan;
+        outline: none;
+      }
+    }
+    .footerL {
+      text-align: center;
+    }
+  }
+  #emailHelp {
+    color: red;
+  }
+  .MyButton {
+    padding: 0.5rem 2rem;
+    border: 2px solid cyan;
+    outline: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    &:hover {
+      background-color: cyan;
+      color: white;
+    }
+  }
+}
+@media (max-width: 375px) {
+  .logInController {
+    .mb-3 {
+      width: 70%;
+    }
+  }
+}

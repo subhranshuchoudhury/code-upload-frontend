@@ -1,5 +1,3 @@
-import "./App.css";
-import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
@@ -8,6 +6,8 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import CodeUpload from "./pages/CodeUpload";
 import ShowCode from "./pages/ShowCode";
+import Footer from "./components/Footer";
+
 function App() {
   return (
     <>
@@ -22,6 +22,7 @@ function App() {
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   );
