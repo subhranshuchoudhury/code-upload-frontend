@@ -48,7 +48,10 @@ const CodeUpload = () => {
         q_title: inputs.q_title,
         q_no: inputs.q_no,
         assignment_no: inputs.assignment_no,
-        language: inputs.language === "" ? "java" : inputs.language,
+        language:
+          inputs.language === "" || inputs.language === undefined
+            ? "java"
+            : inputs.language,
         timestamp: new Date().toLocaleString(),
         code: inputs.code,
       }),

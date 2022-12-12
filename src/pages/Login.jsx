@@ -66,6 +66,7 @@ const Login = () => {
         if (response.status === 200) {
           document.cookie = `username=${inputs.username};`;
           document.cookie = `password=${inputs.password};`;
+          toast.success("Successfully Logged In!");
           setIsRegistered(true);
           setLoading(false);
         } else if (response.status === 404) {
@@ -86,12 +87,14 @@ const Login = () => {
       <div className="pageTitle">LOGIN PAGE</div>
       {IsRegistered ? (
         <div className="formContainer">
-          <Link to="/upload-code" className="MyButton">
-            Upload Code ⬆️
-          </Link>
-          <Link to="/show-code" className="MyButton">
-            Show Your Codes 📁
-          </Link>
+          <div className="actionBtnContainer">
+            <Link to="/upload-code" className="MyButton login_action_btn">
+              UPLOAD CODE ⬆️
+            </Link>
+            <Link to="/show-code" className="MyButton login_action_btn">
+              SHOW CODES 📁
+            </Link>
+          </div>
         </div>
       ) : (
         <div className="formContainerLogIn">

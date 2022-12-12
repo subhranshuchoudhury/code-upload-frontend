@@ -17,6 +17,21 @@
     font-size: 1.5rem;
   }
 }
+
+.actionBtnContainer{
+  margin-top: 80px;
+}
+
+.login_action_btn{
+  margin: 30px;
+  color: violet;
+}
+
+.login_action_btn:hover{
+  background-color: cyan;
+  color: black;
+  padding: 20px;
+}
 .formContainerLogIn {
   display: flex;
   align-items: center;

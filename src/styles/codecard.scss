@@ -13,9 +13,10 @@
       color: #fff;
       font-size: 1.2rem;
     }
-    .codeSource {
-      width: 60vw;
+    .codeViewer {
+      width: 70vw;
       overflow: scroll;
+      border-radius: 23px;
       font-size: 1.4rem;
       -ms-overflow-style: none; /* IE and Edge */
       scrollbar-width: none; /* Firefox */

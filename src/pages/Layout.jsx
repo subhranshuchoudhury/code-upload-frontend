@@ -19,20 +19,20 @@ const Layout = () => {
         </Link>
         <div className={`nav-items ${isOpen && "open"}`}>
           <Link onClick={() => setIsOpen(!isOpen)} to="/">
-            Home 🏡
+            HOME
           </Link>
           <Link onClick={() => setIsOpen(!isOpen)} to="/login">
-            Login 🔐
+            LOGIN
           </Link>
           <Link onClick={() => setIsOpen(!isOpen)} to="/upload-code">
-            Upload Code ⬆️
+            UPLOAD CODE
           </Link>
           <Link onClick={() => setIsOpen(!isOpen)} to="/show-code">
-            Your Codes 📁
+            YOUR CODES
           </Link>
           <Link onClick={() => setIsOpen(!isOpen)}>
             <Link onClick={logoutUser} to="/" style={{ color: "#fff" }}>
-              Logout 🔑
+              LOGOUT
             </Link>
           </Link>
         </div>

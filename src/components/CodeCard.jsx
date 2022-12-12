@@ -1,24 +1,21 @@
-import React, { useEffect } from "react";
-import Prism from "prismjs";
-import "prismjs/themes/prism-tomorrow.css";
+import React from "react";
+import Highlight from "react-highlight";
+import "../../node_modules/react-highlight/node_modules/highlight.js/styles/dracula.css";
 const CodeCard = (props) => {
-  useEffect(() => {
-    Prism.highlightAll();
-  }, []);
-
   return (
     <>
+      <hr />
       <div className="codeContainer">
         <span className="q_details">Assignment: {props.assignment_no}</span>
         <span className="q_details">Question: {props.q_no}</span>
-        <span className="q_details">UPLOAD ON: 1{props.timestamp}</span>
+        <span className="q_details">UPLOAD ON: {props.timestamp}</span>
         <br />
-        <div className="codeSource">
-          <pre className={"language-java"}>
-            <code>{`${props.code}`}</code>
-          </pre>
+        <br />
+        <div className="codeViewer">
+          <Highlight className={props.language}>{props.code}</Highlight>
         </div>
       </div>
+      <hr />
     </>
   );
 };

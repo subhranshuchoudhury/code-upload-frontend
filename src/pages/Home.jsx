@@ -12,9 +12,12 @@ const Home = () => {
         </p>
         <br />
         <br />
-        <div>No Personal Information Is Needed! </div>
-        <div>Upload Anywhere Anytime!</div>
-        <div>Why Use: No Need Of Pendrive & Google SignUp </div>
+        <br />
+        <br />
+        <div>1️⃣ No Personal Information Is Needed.</div>
+        <div>2️⃣ Upload Anywhere Anytime.</div>
+        <div>3️⃣ Why Use: No Need Of Pen Drive & Google SignUp. </div>
+        <div>4️⃣ Unlimited Account & Unlimited Storage. </div>
       </div>
       <div className="secondSection">
         <AnimationPac />
