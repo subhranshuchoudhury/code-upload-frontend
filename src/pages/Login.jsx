@@ -87,14 +87,12 @@ const Login = () => {
       <div className="pageTitle">LOGIN PAGE</div>
       {IsRegistered ? (
         <div className="formContainer">
-          <div className="actionBtnContainer">
-            <Link to="/upload-code" className="MyButton login_action_btn">
-              UPLOAD CODE ⬆️
-            </Link>
-            <Link to="/show-code" className="MyButton login_action_btn">
-              SHOW CODES 📁
-            </Link>
-          </div>
+          <Link to="/upload-code" className="MyButton login_action_btn">
+            UPLOAD CODE ⬆️
+          </Link>
+          <Link to="/show-code" className="MyButton login_action_btn">
+            SHOW CODES 📁
+          </Link>
         </div>
       ) : (
         <div className="formContainerLogIn">
